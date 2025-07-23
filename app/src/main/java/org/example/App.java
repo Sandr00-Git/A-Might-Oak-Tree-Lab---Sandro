@@ -4,11 +4,28 @@
 package org.example;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        // Create Squirrel objects
+        Squirrel cheeks = new Squirrel("Cheeks");
+        Squirrel squeaks = new Squirrel("Squeaks");
+        Squirrel fluffybutt = new Squirrel("Mr. Fluffy Butt");
+
+        // Wrap them in Node objects
+        Node nodeOne = new Node(cheeks);
+        Node nodeTwo = new Node(squeaks);
+        Node nodeThree = new Node(fluffybutt);
+
+        // Attach left and right children to nodeOne
+        nodeOne.setLeft(nodeTwo);
+        nodeOne.setRight(nodeThree);
+
+        // Retrieve children
+        Node retrievedLeft = nodeOne.left();
+        Node retrievedRight = nodeOne.right();
+
+        // Print the results
+        System.out.println("Root Squirrel: " + nodeOne.getData().getName());
+        System.out.println("Left Child: " + (retrievedLeft != null ? retrievedLeft.getData().getName() : "None"));
+        System.out.println("Right Child: " + (retrievedRight != null ? retrievedRight.getData().getName() : "None"));
     }
 }
